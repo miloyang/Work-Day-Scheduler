@@ -9,18 +9,20 @@ var futureEl = $('future');
 var saveBtnEl = $('.saveBtn');
 var timeBlockEl = $('.time-block');
 var descriptionEl = $('.description');
+var hour9El = $('#hour-9');
+
 
 // import advancedFormat from 'dayjs/plugin/advancedFormat';
 // dayjs.extend(advancedFormat)
 
 // this does not work with dayjs advanced format link, unsure why
 // function displayDate() {
-//   var rightNow = dayjs().format('dddd, MMMM Do');
+//   var rightNow = dayjs().format('dddd, MMMM Do, h:mm:ss');
 //   currentDayEl.text(rightNow);
 // }
 
 function displayDate() {
-  var rightNow = moment().format('dddd, MMMM Do');
+  var rightNow = moment().format('dddd, MMMM Do, h:mm:ss');
   currentDayEl.text(rightNow);
 }
 
@@ -31,18 +33,21 @@ saveBtnEl.on('click', function (event) {
   event.preventDefault();
   event.stopPropagation();
 
-  if (descriptionEl.text === "") {
+  // Get the value of the text entered in the description box using jQuery
+  var textInput = $(this).siblings('.description').val().trim();
+
+  // Get the id attribute of the parent element to get the value of the time selected
+  var timeSelected = $(this).parent().attr('id');
+
+  if (textInput === "") {
     return;
   } else {
-    // Get the value of the text entered in the description box using jQuery
-    var textInput = $(this).siblings('.description').val().trim();
-    // Get the id attribute of the parent element to get the value of the time selected
-    var timeSelected = $(this).parent().attr('id');
-
     // Details saved in local storage
-    localStorage.setItem(textInput, timeSelected);
+    localStorage.setItem('textInput', textInput);
+    localStorage.setItem('timeSelected', timeSelected);
   }
 })
+
 
 $('#hour-9 .description').val(localStorage.getItem('hour-9'));
 $('#hour-10 .description').val(localStorage.getItem('hour-10'));
@@ -54,11 +59,63 @@ $('#hour-15 .description').val(localStorage.getItem('hour-15'))
 $('#hour-16 .description').val(localStorage.getItem('hour-16'))
 $('#hour-17 .description').val(localStorage.getItem('hour-17'))
 
-// function currentHour () {
 
+// function retrieveLocalStorage() {
+//   var textInput = localStorage.getItem("description");
+//   var timeSelected = localStorage.getItem('hour-9');
+
+//   if (descriptionEl.text === "") {
+//     return;
+//   } else { 
+//     descriptionEl.text('textInput');
+//     hour9El.text('timeSelected');
+//   }
 // }
 
 
+// $(document).ready(function () {
+//   $('#hour-9 .description').val(localStorage.getItem('textInput, timeSelected'));
+// });
+
+
+// // Retrieve an item from local storage by its key
+// var itemValue = localStorage.getItem('#hour-9 .description');
+
+// // Check if the item exists in local storage
+// if (itemValue !== null) {
+//   // Use the retrieved item
+//   console.log('Item value:', itemValue);
+// } else {
+//   // The item doesn't exist in local storage
+//   console.log('Item not found in local storage');
+// }
+
+
+
+// Get the current hour
+function currentTimeBlock() {
+  var currentHour = dayjs().hour();
+  var timeBlockEl = $('.time-block');
+
+  // Iterate through each time block using the each() method
+  timeBlockEl.each(function () {
+    var currentTime = parseInt($(this).attr('id').split('hour')[1]);
+
+    if (currentTime < currentHour) {
+      $(this).addClass('past');
+    } else if (currentTime === currentHour) {
+      $(this).removeClass('past');
+      $(this).removeClass('future');
+      $(this).addClass('present');
+    } else {
+      $(this).removeClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('future');
+    }
+  })
+}
+
+currentTimeBlock();
 
 
 
