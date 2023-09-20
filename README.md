@@ -13,7 +13,7 @@ N/A
 To use the Work Day Scheduler Application, you can copy and paste this link into your browser: https://miloyang.github.io/Work-Day-Scheduler
 
 The page should open as per below screenshots:
-![Screenshot of Portfolio Page](assets/images/Code-Quiz-Screenshot.png)
+![Screenshot of Portfolio Page](assets/images/Work-Day-Scheduler-Screenshot.png)
 
 The HTML, CSS and Javascript code can be seen when you open the Chrome DevTools by pressing Command+Option+I (macOS) or Control+Shift+I (Windows). A console panel should open either below or to the side of the webpage in the browser. Head into the Elements, Styles and Sources tab, and there you will see the codes. 
 
