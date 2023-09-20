@@ -57,3 +57,9 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.confirmation-msg {
+  text-align: center;
+  font-size: 13px;
+  color: #000000;
+}
