@@ -2,7 +2,7 @@
 
 ## Description
 
-This week's challenge allows the bootcamp students to create a simple calendar application that allows a user to save events for each hour of a typical working day (9am–5pm) by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. The Day.js library will also be used for this app. 
+This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. The Day.js library will also be used for this app. 
 
 ## Installation
 
